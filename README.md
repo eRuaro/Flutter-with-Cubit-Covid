@@ -1,2 +1,2 @@
-# Covid Appi with Flutter and Cubit
+# Covid App with Flutter and Cubit
  A Flutter application showcasing the Cubit state management solution
