@@ -42,7 +42,8 @@ class _SearchScreenState extends State<SearchScreen> {
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 50),
         child: TextField(
-          onSubmitted: (value) => submitRegionName(context, value.toLowerCase()),
+          onSubmitted: (value) =>
+              submitRegionName(context, value.toLowerCase()),
           textInputAction: TextInputAction.search,
           decoration: InputDecoration(
             hintText: "Enter a Country",
@@ -62,86 +63,85 @@ class _SearchScreenState extends State<SearchScreen> {
 
   Widget covidDataLoaded(CovidData covidData) {
     return Scaffold(
-      resizeToAvoidBottomInset: false,
-        body: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Padding(
-              padding: EdgeInsets.only(
-                left: 20,
-                bottom: 15,
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Padding(
+            padding: EdgeInsets.only(
+              left: 20,
+              bottom: 15,
+            ),
+            child: Align(
+              child: Text(
+                covidData.region.toUpperCase(),
+                style: TextStyle(
+                  fontSize: 40,
+                  fontWeight: FontWeight.w500,
+                  color: Color(0xff142237),
+                ),
               ),
-              child: Align(
-                child: Text(
-                  covidData.region.toUpperCase(),
-                  style: TextStyle(
-                    fontSize: 40,
-                    fontWeight: FontWeight.w500,
-                    color: Color(0xff142237),
-                  ),
-                ),
-                alignment: Alignment.topLeft,
+              alignment: Alignment.topLeft,
+            ),
+          ),
+          SizedBox(
+            height: 20,
+          ),
+          // AspectRatio(
+          //   aspectRatio: 1.8,
+          //   child: Image(
+          //     image: AssetImage(
+          //       'assets/images/coronavirus.png',
+          //     ),
+          //   ),
+          // ),
+          // SizedBox(
+          //   height: 40,
+          // ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              DataContainer(
+                data: 'Confirmed',
+                color: Color(0xFFFC1441),
+                dataValue: covidData.totalCases,
               ),
-            ),
-            SizedBox(
-              height: 20,
-            ),
-            // AspectRatio(
-            //   aspectRatio: 1.8,
-            //   child: Image(
-            //     image: AssetImage(
-            //       'assets/images/coronavirus.png',
-            //     ),
-            //   ),
-            // ),
-            // SizedBox(
-            //   height: 40,
-            // ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                DataContainer(
-                  data: 'Confirmed',
-                  color: Color(0xFFFC1441),
-                  dataValue: covidData.totalCases,
-                ),
-                SizedBox(
-                  width: 20,
-                ),
-                DataContainer(
-                  color: Color(0xFF157FFB),
-                  data: 'Active',
-                  dataValue: covidData.activeCases,
-                ),
-              ],
-            ),
-            SizedBox(
-              height: 20,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                DataContainer(
-                  data: 'Recovered',
-                  color: Color(0xFF30A64A),
-                  dataValue: covidData.recoveries,
-                ),
-                SizedBox(
-                  width: 20,
-                ),
-                DataContainer(
-                  color: Color(0xFF6D757D),
-                  data: 'Deceased',
-                  dataValue: covidData.deaths,
-                ),
-              ],
-            ),
-            SizedBox(
-              height: 60,
-            ),
-            covidDataInitial(),
-          ],
-        ),
+              SizedBox(
+                width: 20,
+              ),
+              DataContainer(
+                color: Color(0xFF157FFB),
+                data: 'Active',
+                dataValue: covidData.activeCases,
+              ),
+            ],
+          ),
+          SizedBox(
+            height: 20,
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              DataContainer(
+                data: 'Recovered',
+                color: Color(0xFF30A64A),
+                dataValue: covidData.recoveries,
+              ),
+              SizedBox(
+                width: 20,
+              ),
+              DataContainer(
+                color: Color(0xFF6D757D),
+                data: 'Deceased',
+                dataValue: covidData.deaths,
+              ),
+            ],
+          ),
+          SizedBox(
+            height: 20,
+          ),
+          covidDataInitial(),
+        ],
+      ),
     );
   }
 
