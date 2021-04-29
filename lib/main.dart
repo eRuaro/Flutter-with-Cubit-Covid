@@ -9,7 +9,7 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  CovidDataCubit _covidDataCubit = CovidDataCubit(CovidDataRepository());
+  final CovidDataCubit _covidDataCubit = CovidDataCubit(CovidDataRepository());
   @override
   Widget build(BuildContext context) {
     return BlocProvider(

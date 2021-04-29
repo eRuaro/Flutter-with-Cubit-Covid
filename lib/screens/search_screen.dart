@@ -35,5 +35,6 @@ class _SearchScreenState extends State<SearchScreen> {
     final covidDataCubit = context.read<CovidDataCubit>();
 
     covidDataCubit.getCovidData(regionName);
+    Navigator.of(context).pushNamed('Data Screen');
   }
 }
