@@ -1,5 +1,6 @@
 import 'package:covid_cubit/cubit/covid_data_cubit.dart';
 import 'package:covid_cubit/model/covid_data_repository.dart';
+import 'package:covid_cubit/screens/data_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'screens/search_screen.dart';
@@ -17,9 +18,13 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         title: 'Flutter Cubit Demo',
         routes: {
-          'Search Screeen': (context) => BlocProvider.value(
+          '/': (context) => BlocProvider.value(
             value: _covidDataCubit, 
             child: SearchScreen(),
+          ),
+          'Data Screen': (context) => BlocProvider.value(
+            value: _covidDataCubit,
+            child: DataScreen(),
           ),
         },
       ),
