@@ -12,6 +12,7 @@ class CovidDataRepository {
       activeCases: covidData['data']['regions'][regionName]['active_cases'].toString(),
       recoveries: covidData['data']['regions'][regionName]['recovered'].toString(),
       deaths: covidData['data']['regions'][regionName]['deaths'].toString(),
+      region: covidData['data']['regions'][regionName]['name'].toString(),
     );
   }
 }
