@@ -8,15 +8,17 @@ class Networking {
 
     var response = await http.get(Uri.parse(url));
 
-    if (response.statusCode == 200) {
-      var decodedCovidData = jsonDecode(response.body);
-
-      return decodedCovidData;
-    } else {
-      throw Exception();
+    if (response.statusCode != 200) {
+      throw NetworkException();
     }
+
+    var decodedCovidData = jsonDecode(response.body);
+
+    return decodedCovidData;
   }
 }
+
+class NetworkException implements Exception {}
 
 //response
 //[
@@ -27,7 +29,7 @@ class Networking {
 //        total_cases:
 //        active_cases:
 //        recovered:
-//        deaths: 
+//        deaths:
 //   ]  india: [
 //  ]
 // ]

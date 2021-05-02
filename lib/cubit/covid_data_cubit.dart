@@ -1,7 +1,8 @@
 import 'package:bloc/bloc.dart';
+import 'package:meta/meta.dart';
 import 'package:covid_cubit/model/covid_data.dart';
 import 'package:covid_cubit/model/covid_data_repository.dart';
-import 'package:meta/meta.dart';
+import 'package:covid_cubit/services/networking.dart';
 
 part 'covid_data_state.dart';
 
@@ -16,7 +17,7 @@ class CovidDataCubit extends Cubit<CovidDataState> {
       emit(
         CovidDataLoaded(covidData: covidData),
       );
-    } on Exception {
+    } on NetworkException {
       emit(CovidDataException(message: 'Failed to Load Covid Data'));
     }
   }
